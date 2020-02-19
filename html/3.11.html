@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>申报记录查询</title>
+    <link href="../node_modules/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../node_modules/layui/css/layui.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="commonPage">
+        <header class="toolbar greenToolBar">
+            <a class="icon-back" href="../index.html"></a>
+            <span class="title">查询</span>
+        </header>
+        <section class="main-Panel">
+            <div class="fixFooterPanel">
+                <div class="commonPanel notBorder">
+                    <ul class="common-ul">
+                        <li>
+                            <span class="grey">起始时间</span>
+                            <input type="text" value="2020年02月17日">
+                        <li>
+                            <span class="grey">结束时间</span>
+                            <input type="text" value="2020年02月17日">
+                        </li>
+                        <li>
+                            <span class="grey">选择状态</span>
+                            <div class="radioPanel selected">
+                                <i class="icon-radio"></i>
+                                待勘验
+                            </div>
+                            <div class="radioPanel">
+                                <i class="icon-radio"></i>
+                                勘验通过
+                            </div>
+                            <div class="radioPanel">
+                                <i class="icon-radio"></i>
+                                勘验不通过
+                            </div>
+                        </li>
+                        <li>
+                            <span class="grey">场所类型</span>
+                            <div class="radioPanel selected">
+                                <i class="icon-radio"></i>
+                                无害化场
+                            </div>
+                            <div class="radioPanel">
+                                <i class="icon-radio"></i>
+                                养殖场
+                            </div>
+                        </li>
+                        <li>
+                            <span class="grey">场所名称</span>
+                            <input type="text">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <footer>
+                <a class="normalBtn fillBtn" href="1.1.0.html">查询</a>
+            </footer>
+        </section>
+    </div>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="../node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+           $(".radioPanel").click(function(){
+               $(this).addClass("selected").siblings().removeClass("selected");
+           })
+        })
+    </script>
+</body>
+
+</html>

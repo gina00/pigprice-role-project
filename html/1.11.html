@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>申报记录查询</title>
+    <link href="../node_modules/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../node_modules/layui/css/layui.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="commonPage">
+        <header class="toolbar greenToolBar">
+            <a class="icon-back" href="../index.html"></a>
+            <span class="title">无害化申报</span>
+        </header>
+        <section class="main-Panel">
+            <div class="commonPanel notBorder">
+                <ul class="common-ul">
+                    <li>
+                        <span class="grey">养殖场名称</span>
+                        <span class="black">温氏猪场</span>
+                    </li>
+                    <li>
+                        <span class="grey">动物种类</span>
+                        <span class="black">猪</span>
+                    </li>
+                    <li>
+                        <span class="grey">月存栏量</span>
+                        <input type="text">头
+                    <li>
+                        <span class="grey">月出栏量</span>
+                        <input type="text">头
+                    </li>
+                    <li>
+                        <span class="grey">死亡数</span>
+                        <input type="text">头
+                    </li>
+                    <li>
+                        <span class="grey">耳标号</span>
+                        <a class="greyBtn" href="1.111.html">添加耳标号</a>
+                    </li>
+                    <li>
+                        <span class="grey">死亡原因</span>
+                        <div class="selectPanel">
+                            <span>正常死亡</span>
+                            <div class="chooseBtn" id="chooseBtn"></div>
+                            <div class="choose-sub-panel hideDown" id="chooseDownPanel">
+                                <ul>
+                                    <li><a>拉稀</a></li>
+                                    <li><a>喘气</a></li>
+                                    <li><a>发烧</a></li>
+                                    <li><a>感冒</a></li>
+                                    <li><a>其他</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="grey">处理方式</span>
+                        <div class="selectPanel">
+                            <span class="grey">请选择</span>
+                            <div class="chooseBtn" id="chooseBtn"></div>
+                            <div class="choose-sub-panel hideDown">
+                                <ul>
+                                    <li><a>深埋</a></li>
+                                    <li><a>化制</a></li>
+                                    <li><a>高温处理</a></li>
+                                    <li><a>化学处理</a></li>
+                                    <li><a>其他</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="grey">现场监控</span>
+                        <div class="selectPanel subWidth">
+                            <div class="chooseBtn" id="chooseBtn"></div>
+                            <div class="choose-sub-panel hideDown">
+                                <ul>
+                                    <li><a>请选择用户类型1</a></li>
+                                    <li><a>请选择用户类型2</a></li>
+                                    <li><a>请选择用户类型3</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a class="normalBtn fillBtn">查看</a>
+
+                    </li>
+                    <li>
+                        <span class="grey"></span>
+                        <a class="normalBtn fillBtn">录视频</a>
+                    </li>
+                    <li class="specailImgPanle">
+                        <span class="grey">现场照片</span>
+                        <div class="sub-ul-imgList">
+                            <div>
+                                <img src="../images/pig.png">
+                            </div>
+                            <div>
+                                <img src="../images/pig.png">
+                            </div>
+                            <div>
+                                <img src="../images/pig.png">
+                            </div>
+                            <div>
+                                <img src="../images/pig.png">
+                            </div>
+                            <div>
+                                <img src="../images/pig.png">
+                            </div>
+                            <div>
+                                <img src="../images/pig.png">
+                            </div>
+                            <div>
+                                <img src="../images/add_img.png">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="grey">现场照片</span>
+                        <a class="greyBtn" href="1.1.html">点击签名</a>
+                    </li>
+                </ul>
+            </div>
+            <footer>
+                <a class="normalBtn fillBtn" href="1.12.html">提交</a>
+            </footer>
+        </section>
+    </div>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="../node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            var userUlClickIndex = 0;
+            $(".common-ul li .chooseBtn").click(function () {
+                userUlClickIndex++;
+                if (userUlClickIndex % 2 !== 0) {
+                    $(this).next().removeClass("hideDown").addClass("slideDown");
+                } else {
+                    $(this).next().addClass("hideDown");
+                }
+            })
+
+        })
+    </script>
+</body>
+
+</html>

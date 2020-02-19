@@ -15,36 +15,155 @@
 
 <body>
     <div class="commonPage">
-        <header class="toolbar">
-            <a class="icon-back" href="login.html"></a>
-            <span class="title"></span>
+        <header class="toolbar greenToolBar">
+            <a class="icon-back" href="../index.html"></a>
+            <span class="title">无害化申报</span>
         </header>
         <section class="main-Panel">
-            <div class="retrievePwPanel">
-                <div class="title">
-                    <p class="subBigTitle">验证码登录</p>
-                    <p class="subTitle">验证码发至手机号：18983004945</p>
-                </div>
-                <div class="verificationCodePanel">
-                    <ul class="verificationCodePanel-ul">
+            <div class="fixFooterPanel">
+                <div class="tablePanel autoHeight">
+                    <ul class="tab-panel">
+                        <li class="selected">
+                            <a>已提交</a>
+                        </li>
                         <li>
-                            <input type="text">
-                        </li><li>
-                            <input type="text">
-                        </li><li>
-                            <input type="text">
-                        </li><li>
-                            <input type="text">
-                        </li><li>
-                            <input type="text">
-                        </li><li>
-                            <input type="text">
+                            <a>被退回</a>
+                            <i class="redIcon"></i>
                         </li>
                     </ul>
+                    <table class="layui-table" lay-skin="line">
+                        <thead>
+                            <tr>
+                                <th>申报时间</th>
+                                <th class="green">死亡数（头）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="layui-table" lay-skin="line" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>申报时间2</th>
+                                <th class="green">死亡数（头）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
             <footer>
-                <a class="normalBtn fillBtn" href="1.2.html">发送</a>
+                <a class="normalBtn fillBtn" href="1.11.html">我要申报</a>
             </footer>
         </section>
     </div>
@@ -53,6 +172,15 @@
     <script src="../js/common.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="../node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $(".tab-panel li").click(function () {
+                $(this).addClass("selected").siblings().removeClass("selected");
+                $(".layui-table").hide().eq($(this).index()).show();
+            })
+
+        })
+    </script>
 </body>
 
 </html>

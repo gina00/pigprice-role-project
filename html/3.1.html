@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>3.1.0-日报管理（猪场、屠宰场）</title>
+    <link href="../node_modules/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../node_modules/layui/css/layui.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="commonPage">
+        <header class="toolbar greenToolBar">
+            <a class="icon-back" href="1.1.html"></a>
+            <span class="title">养殖环节无害化</span>
+            <a class="right_link" href="3.11.html">查询</a>
+        </header>
+        <section class="main-Panel">
+            <div class="fixFooterPanel">
+                <div class="tablePanel autoHeight">
+                    <ul class="tab-panel">
+                        <li class="selected">
+                            <a>待勘验</a>
+                        </li>
+                        <li>
+                            <a>勘验通过</a>
+                        </li>
+                        <li>
+                            <a>勘验不通过</a>
+                        </li>
+                    </ul>
+                    <table class="layui-table" lay-skin="line">
+                        <thead>
+                            <tr>
+                                <th>申报时间</th>
+                                <th class="whiteSpace">场所类型</th>
+                                <th class="whiteSpace">场所名称</th>
+                                <th class="whiteSpace">处理量（头）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2020-02-19 10:00:10</td>
+                                <td>养殖场</td>
+                                <td>A</td>
+                                <td class="green">53</td>
+                            </tr>
+                            <tr>
+                                <td>2020-02-19 10:00:10</td>
+                                <td>养殖场</td>
+                                <td>A</td>
+                                <td class="green">53</td>
+                            </tr>
+                            <tr>
+                                <td>2020-02-19 10:00:10</td>
+                                <td>养殖场</td>
+                                <td>A</td>
+                                <td class="green">53</td>
+                            </tr>
+                            <tr>
+                                <td>2020-02-19 10:00:10</td>
+                                <td>养殖场</td>
+                                <td>A</td>
+                                <td class="green">53</td>
+                            </tr>
+                            <tr>
+                                <td>2020-02-19 10:00:10</td>
+                                <td>养殖场</td>
+                                <td>A</td>
+                                <td class="green">53</td>
+                            </tr>
+                            <tr>
+                                <td>2020-02-19 10:00:10</td>
+                                <td>养殖场</td>
+                                <td>A</td>
+                                <td class="green">53</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="layui-table" lay-skin="line" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>申报时间2</th>
+                                <th class="green">死亡数（头）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12月10日采集日报</td>
+                                <td class="green">
+                                    53
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <footer>
+                <a class="normalBtn fillBtn" href="1.1.0.html">我要申报</a>
+            </footer>
+        </section>
+    </div>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="../node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $(".tab-panel li").click(function () {
+                $(this).addClass("selected").siblings().removeClass("selected");
+                $(".layui-table").hide().eq($(this).index()).show();
+            })
+
+        })
+    </script>
+</body>
+
+</html>

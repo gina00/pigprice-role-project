@@ -150,6 +150,15 @@ a:hover {
     border: 1px solid #46b81b;
 }
 
+.greyBtn {
+    padding: 5px 8px;
+    color: #000;
+    border-radius: 5px;
+    text-align: center;
+    white-space: nowrap;
+    background: #f1f1f1;
+}
+
 /* 颜色类 */
 .normal {
     color: #333;
@@ -170,6 +179,18 @@ a:hover {
 
 .grey {
     color: #717171;
+}
+
+.bg-orange {
+    background: #fda14b;
+}
+
+.bg-red {
+    background: #ff4141;
+}
+
+.bg-grey {
+    background: #717171;
 }
 
 .green {
@@ -219,93 +240,20 @@ a:hover {
     background: rgba(0, 0, 0, .2)
 }
 
-.icon-user {
-    background: url("../images/wo_normal.png") no-repeat center;
-
-}
-
-.icon-pw {
-    background: url("../images/pass_nor.png") no-repeat center;
-}
-
 .icon-back {
     background: url("../images/btn_Leftg.png") no-repeat center;
     background-size: contain;
 }
-
 .greenToolBar .icon-back {
     background: url("../images/btn_Leftw.png") no-repeat center;
     background-size: contain;
 }
-
-.greenToolBar .icon-add {
-    background: url("../images/jia.png") no-repeat center;
-    background-size: contain;
+.icon-radio {
+    border: 1px solid #ccc;
+    background: #fff;
 }
 
-.icon-showDetailNor {
-    background: url("../images/eye_nor.png") no-repeat center;
-}
-
-.selected .icon-user {
-    background: url("../images/wo_click.png") no-repeat center;
-    background-size: contain;
-}
-
-.selected .icon-pw {
-    background: url("../images/pass_click.png") no-repeat center;
-    background-size: contain;
-}
-
-.icon-showDetail {
-    background: url("../images/eye_click.png") no-repeat center;
-    background-size: contain;
-}
-
-.icon-home {
-    background: url("../images/home_nor.png") no-repeat center;
-
-}
-
-.selected .icon-home {
-    background: url("../images/home_click.png") no-repeat center;
-    background-size: contain;
-}
-
-.icon-message {
-    background: url("../images/news_nor.png") no-repeat center;
-}
-
-.selected .icon-message {
-    background: url("../images/news_click.png") no-repeat center;
-    background-size: contain;
-}
-
-.icon-mine {
-    background: url("../images/wode_nor.png") no-repeat center;
-}
-
-.selected .icon-mine {
-    background: url("../images/wode_click.png") no-repeat center;
-    background-size: contain;
-}
-
-.icon-retrivePw {
-    background: url("../images/icon_pass.png") no-repeat center;
-}
-
-.icon-btnRight {
-    background: url("../images/btn_right.png") no-repeat center;
-}
-
-.icon-close {
-    background: url("../images/close.png") no-repeat center;
-}
-
-.icon-send {
-    background: url("../images/WeChat.png") no-repeat center;
-}
-
-.icon-pc {
-    background: url("../images/wenj.png") no-repeat center;
+.radioPanel.selected .icon-radio {
+    border: 5px solid #46b81b;
+    background: #fff;
 }
