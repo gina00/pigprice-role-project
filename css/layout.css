@@ -347,11 +347,6 @@ footer {
     border: 1px solid #45bc08;
 }
 
-.notBorder .selectPanel input:focus {
-    color: #171717;
-    border: none;
-}
-
 .selectPanel {
     width: 61%;
     height: 35px;
@@ -376,7 +371,7 @@ footer {
 
 .notBorder .selectPanel input:focus {
     color: #171717;
-    border: 1px solid #45bc08;
+    border: 1px solid transparent;
 }
 
 .chooseBtn {
