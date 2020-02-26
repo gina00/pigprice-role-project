@@ -151,6 +151,7 @@ a:hover {
 }
 
 .greyBtn {
+    min-width: 70px;
     padding: 5px 8px;
     color: #000;
     border-radius: 5px;
@@ -227,6 +228,10 @@ a:hover {
     font-size: 20px;
 }
 
+.font12 {
+    font-size: 12px;
+}
+
 /* 隐藏滚动条 */
 
 ::-webkit-scrollbar {
@@ -244,10 +249,12 @@ a:hover {
     background: url("../images/btn_Leftg.png") no-repeat center;
     background-size: contain;
 }
+
 .greenToolBar .icon-back {
     background: url("../images/btn_Leftw.png") no-repeat center;
     background-size: contain;
 }
+
 .icon-radio {
     border: 1px solid #ccc;
     background: #fff;
@@ -256,4 +263,8 @@ a:hover {
 .radioPanel.selected .icon-radio {
     border: 5px solid #46b81b;
     background: #fff;
+}
+
+.icon-close {
+    background: url(../images/close.png) no-repeat center;
 }

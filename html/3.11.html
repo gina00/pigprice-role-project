@@ -25,35 +25,23 @@
                     <ul class="common-ul">
                         <li>
                             <span class="grey">起始时间</span>
-                            <input type="text" value="2020年02月17日">
+                            <input type="text" id="startDate">
                         <li>
                             <span class="grey">结束时间</span>
-                            <input type="text" value="2020年02月17日">
+                            <input type="text" id="endDate">
                         </li>
                         <li>
                             <span class="grey">选择状态</span>
-                            <div class="radioPanel selected">
-                                <i class="icon-radio"></i>
-                                待勘验
-                            </div>
-                            <div class="radioPanel">
-                                <i class="icon-radio"></i>
-                                勘验通过
-                            </div>
-                            <div class="radioPanel">
-                                <i class="icon-radio"></i>
-                                勘验不通过
+                            <div class="selectPanel" id="groupStatus">
+                                <span></span>
+                                <div class="chooseBtn" id="chooseBtn"></div>
                             </div>
                         </li>
                         <li>
                             <span class="grey">场所类型</span>
-                            <div class="radioPanel selected">
-                                <i class="icon-radio"></i>
-                                无害化场
-                            </div>
-                            <div class="radioPanel">
-                                <i class="icon-radio"></i>
-                                养殖场
+                            <div class="selectPanel" id="groupType">
+                                <span></span>
+                                <div class="chooseBtn" id="chooseBtn"></div>
                             </div>
                         </li>
                         <li>
@@ -73,12 +61,43 @@
     <script src="../js/common.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="../node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/rolldate.js"></script>
+    <script type="text/javascript" src="../js/createGroupPanel.js"></script>
     <script>
         $(function () {
-           $(".radioPanel").click(function(){
-               $(this).addClass("selected").siblings().removeClass("selected");
-           })
+            $(".radioPanel").click(function () {
+                $(this).addClass("selected").siblings().removeClass("selected");
+            })
+            // 选择状态数据
+            downListData({
+                groupId: 'groupStatus', //触发事件ID，与dom相关
+                groupPanelId: 'groupStatusPanel', //显示面板ID，自定义
+                arr: ['待勘察', '勘察通过', '勘察不通过'],
+                isChoose: true, //是否有单选、多选
+                className: 'icon-radio', //复选框class
+            }); // 场所类型数据
+            downListData({
+                groupId: 'groupType', //触发事件ID，与dom相关
+                groupPanelId: 'groupTypePanel', //显示面板ID，自定义
+                arr: ['全部', '无害化场', '养殖场'],
+                isChoose: true, //是否有单选、多选
+                className: 'icon-radio', //复选框class
+            });
         })
+        window.onload = function () {
+            new Rolldate({
+                    el: '#startDate',
+                    format: 'YYYY-MM-DD',
+                    beginYear: 2000,
+                    endYear: 2100
+                }),
+                new Rolldate({
+                    el: '#endDate',
+                    format: 'YYYY-MM-DD',
+                    beginYear: 2000,
+                    endYear: 2100
+                })
+        }
     </script>
 </body>
 

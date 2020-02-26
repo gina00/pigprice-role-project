@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>无害化申报</title>
+    <link href="../node_modules/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../node_modules/layui/css/layui.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/layout.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="commonPage">
+        <header class="toolbar greenToolBar">
+            <a class="icon-back" href="../index.html"></a>
+            <span class="title">无害化申报</span>
+            <a class="right_link" id="anomalyBtn">被退回原因</a>
+        </header>
+        <section class="main-Panel">
+            <div class="commonPanel notBorder">
+                <ul class="common-ul">
+                    <li>
+                        <span class="grey">无害化处<br>理厂名称</span>
+                        <span class="black">南鑫无害化处理厂</span>
+                    </li>
+                    <li>
+                        <span class="grey">动物种类</span>
+                        <span class="black">猪</span>
+                    </li>
+                    <li>
+                        <span class="grey">出库数量</span>
+                        <input type="text" placeholder="请输入">头
+                    <li>
+                        <span class="grey">出库重量</span>
+                        <input type="text" placeholder="请输入">公斤
+                    </li>
+                    <li>
+                        <span class="grey">现场监控</span>
+                        <div class="selectPanel" id="groupVideo">
+                            <input type="text" placeholder="请选择">
+                            <div class="chooseBtn" id="chooseBtn"></div>
+                        </div>
+                        <a class="normalBtn fillBtn">查看</a>
+                    </li>
+                    <li>
+                        <span class="grey">开始处理<br>时间</span>
+                        <div class="selectPanel" id="groupTime">
+                            <input type="text" placeholder="请选择">
+                            <div class="chooseBtn" id="chooseBtn"></div>
+                        </div>
+                    </li>
+					<li>
+						<span class="grey"></span>
+						<div class="red font12">摄像头从开始录制10分钟的视频</div>
+					</li>
+                    <li>
+                        <span class="grey">现场照片</span>
+                        <div class="sub-ul-imgList">
+                            <div>
+                                <img src="../images/pig.png">
+                            </div>
+                            <div>
+                                <img src="../images/pig.png">
+                            </div>
+                            <div>
+                                <img src="../images/add_img.png">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="grey">现场照片</span>
+                        <span class="black">
+                            <img src="../images/sign.jpg">
+                        </span>
+                        <a class="greyBtn" href="1.1.html">重签</a>
+                    </li>
+                    </span>
+            </div>
+            <footer>
+                <a class="normalBtn fillBtn" href="1.1.0.html">提交</a>
+            </footer>
+            <div class="windowPanel" id="windowVideoPanel" style="display: none;">
+                <div class="windowContentPanel windowVideoPanel">
+                    <div class="videoPanel">
+                        <video src="../video/video1.mp4" controls="controls" autoplay="autoplay" height="100%" id="video1"></video>
+                    </div>
+                    <a class="icon-close closeBtn" id="closeVideoWindow"></a>
+                </div>
+            </div>
+            <div class="windowPanel" id="windowPanel" style="display: none;">
+                <div class="windowContentPanel">
+                    <div class="headerPanel">
+                        被退回原因
+                    </div>
+                    <div class="sub-content">
+                        <p class="headTxt">
+                            厦门市活猪平均价格环比超5%
+                        </p>
+                        <p class="subHeadTxt">异常原因：</p>
+                        <p class="content">
+                            第四季度，经巡网自查，我厅网站不存在“单项否决”的问题。网站发布各种信息共2793条，设区市以及平潭综合实验区农业农村局发布960条。设区市以及平潭综合实验区农业农村局发布960条。
+                        </p>
+                    </div>
+                    <a class="icon-close closeBtn" id="closeWindow">
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="../node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/rolldate.js"></script>
+    <script type="text/javascript" src="../js/createGroupPanel.js"></script>
+    <script>
+        $(function () {
+            // 现场监控
+            downListData({
+                groupId: 'groupVideo', //触发事件ID，与dom相关
+                groupPanelId: 'groupVideoPanel', //显示面板ID，自定义
+                arr: ['摄像头1', '摄像头2', '摄像头3'],
+                isChoose: true, //是否有单选、多选
+                className: 'icon-radio', //复选框class
+            });
+        })
+		window.onload = function () {
+		        new Rolldate({
+		            el: '#groupTime',
+		            format: 'YYYY-MM-DD hh:mm',
+		            beginYear: 2000,
+		            endYear: 2100
+		        })
+		}
+    </script>
+</body>
+
+</html>

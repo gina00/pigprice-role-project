@@ -18,7 +18,7 @@
         <header class="toolbar greenToolBar">
             <a class="icon-back" href="../index.html"></a>
             <span class="title">无害化申报</span>
-            <span class="right_link">被退回原因</span>
+            <a class="right_link" id="anomalyBtn">被退回原因</a>
         </header>
         <section class="main-Panel">
             <div class="commonPanel notBorder">
@@ -40,17 +40,18 @@
                     </li>
                     <li>
                         <span class="grey">现场监控</span>
-                        <div class="selectPanel">
+                        <div class="selectPanel" id="groupVideo">
+                            <span></span>
                             <div class="chooseBtn" id="chooseBtn"></div>
-                            <div class="choose-sub-panel hideDown">
-                                <ul>
-                                    <li><a>请选择用户类型1</a></li>
-                                    <li><a>请选择用户类型2</a></li>
-                                    <li><a>请选择用户类型3</a></li>
-                                </ul>
-                            </div>
                         </div>
                         <a class="normalBtn fillBtn">查看</a>
+                    </li>
+                    <li>
+                        <span class="grey"></span>
+                        <div class="flex-between">
+                            <a class="greyBtn" href="1.1.html">停止</a>
+                            <a> 00:08</a>
+                        </div>
                     </li>
                     <li>
                         <span class="grey"></span>
@@ -58,7 +59,7 @@
                             <a class="greyBtn" href="1.1.html">重录视频</a>
                             <a> 00:08</a>
                         </div>
-                        <a class="normalBtn fillBtn" href="1.1.html">播放</a>
+                        <a class="normalBtn fillBtn" id='playBtn'>播放</a>
                     </li>
                     <li>
                         <span class="grey">现场照片</span>
@@ -86,6 +87,32 @@
             <footer>
                 <a class="normalBtn fillBtn" href="1.1.0.html">提交</a>
             </footer>
+            <div class="windowPanel" id="windowVideoPanel" style="display: none;">
+                <div class="windowContentPanel windowVideoPanel">
+                    <div class="videoPanel">
+                        <video src="../video/video1.mp4" controls="controls" autoplay="autoplay" height="100%" id="video1"></video>
+                    </div>
+                    <a class="icon-close closeBtn" id="closeVideoWindow"></a>
+                </div>
+            </div>
+            <div class="windowPanel" id="windowPanel" style="display: none;">
+                <div class="windowContentPanel">
+                    <div class="headerPanel">
+                        被退回原因
+                    </div>
+                    <div class="sub-content">
+                        <p class="headTxt">
+                            厦门市活猪平均价格环比超5%
+                        </p>
+                        <p class="subHeadTxt">异常原因：</p>
+                        <p class="content">
+                            第四季度，经巡网自查，我厅网站不存在“单项否决”的问题。网站发布各种信息共2793条，设区市以及平潭综合实验区农业农村局发布960条。设区市以及平潭综合实验区农业农村局发布960条。
+                        </p>
+                    </div>
+                    <a class="icon-close closeBtn" id="closeWindow">
+                    </a>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -93,6 +120,7 @@
     <script src="../js/common.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="../node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/createGroupPanel.js"></script>
     <script>
         $(function () {
             var userUlClickIndex = 0;
@@ -105,7 +133,33 @@
                 }
             })
 
+            // 现场监控
+            downListData({
+                groupId: 'groupVideo', //触发事件ID，与dom相关
+                groupPanelId: 'groupVideoPanel', //显示面板ID，自定义
+                arr: ['摄像头1', '摄像头2', '摄像头3'],
+                isChoose: true, //是否有单选、多选
+                className: 'icon-radio', //复选框class
+            });
+            showWindowPanel();
         })
+
+        function showWindowPanel() {
+            //弹出被退原因窗口
+            $("#anomalyBtn").click(function () {
+                $("#windowPanel").show();
+            });
+            $("#closeWindow").click(function () {
+                $("#windowPanel").hide();
+            });
+            // 弹出视频播放窗口
+            $("#playBtn").click(function () {
+                $("#windowVideoPanel").show();
+            });
+            $("#closeVideoWindow").click(function () {
+                $("#windowVideoPanel").hide();
+            })
+        }
     </script>
 </body>
 

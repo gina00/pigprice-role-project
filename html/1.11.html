@@ -20,6 +20,7 @@
             <span class="title">无害化申报</span>
         </header>
         <section class="main-Panel">
+
             <div class="commonPanel notBorder">
                 <ul class="common-ul">
                     <li>
@@ -32,14 +33,14 @@
                     </li>
                     <li>
                         <span class="grey">月存栏量</span>
-                        <input type="text">头
+                        <input type="text" placeholder="请输入">头
                     <li>
                         <span class="grey">月出栏量</span>
-                        <input type="text">头
+                        <input type="text" placeholder="请输入">头
                     </li>
                     <li>
                         <span class="grey">死亡数</span>
-                        <input type="text">头
+                        <input type="text" placeholder="请输入">头
                     </li>
                     <li>
                         <span class="grey">耳标号</span>
@@ -47,10 +48,10 @@
                     </li>
                     <li>
                         <span class="grey">死亡原因</span>
-                        <div class="selectPanel">
-                            <span>正常死亡</span>
+                        <div class="selectPanel" id="groupReson">
+                            <input type="text" placeholder="请选择">
                             <div class="chooseBtn" id="chooseBtn"></div>
-                            <div class="choose-sub-panel hideDown" id="chooseDownPanel">
+                            <!-- <div class="choose-sub-panel hideDown" id="chooseDownPanel">
                                 <ul>
                                     <li><a>拉稀</a></li>
                                     <li><a>喘气</a></li>
@@ -58,36 +59,22 @@
                                     <li><a>感冒</a></li>
                                     <li><a>其他</a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                     </li>
                     <li>
                         <span class="grey">处理方式</span>
-                        <div class="selectPanel">
-                            <span class="grey">请选择</span>
+                        <div class="selectPanel" id="groupMethod">
+                            <input type="text" placeholder="请选择">
                             <div class="chooseBtn" id="chooseBtn"></div>
-                            <div class="choose-sub-panel hideDown">
-                                <ul>
-                                    <li><a>深埋</a></li>
-                                    <li><a>化制</a></li>
-                                    <li><a>高温处理</a></li>
-                                    <li><a>化学处理</a></li>
-                                    <li><a>其他</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </li>
                     <li>
                         <span class="grey">现场监控</span>
-                        <div class="selectPanel subWidth">
+                        <div class="selectPanel subWidth" id="groupVideo">
+                            <input type="text" placeholder="请选择">
                             <div class="chooseBtn" id="chooseBtn"></div>
-                            <div class="choose-sub-panel hideDown">
-                                <ul>
-                                    <li><a>请选择用户类型1</a></li>
-                                    <li><a>请选择用户类型2</a></li>
-                                    <li><a>请选择用户类型3</a></li>
-                                </ul>
-                            </div>
+
                         </div>
                         <a class="normalBtn fillBtn">查看</a>
 
@@ -124,13 +111,27 @@
                     </li>
                     <li>
                         <span class="grey">现场照片</span>
-                        <a class="greyBtn" href="1.1.html">点击签名</a>
+                        <a class="greyBtn" id="signBtn">点击签名</a>
                     </li>
                 </ul>
             </div>
             <footer>
                 <a class="normalBtn fillBtn" href="1.12.html">提交</a>
             </footer>
+            <div class="selectOut selectOutSignPanel" id="signNamePanel" style="display: none;">
+                <section>
+                    <div class="btnBox">
+                        <button class="cancleBtn">重签</button>
+                        <button class="currenBtn">保存</button>
+                    </div>
+                    <div class="signNamePanel">
+                        <div class="signNameArea">
+                            签名区域
+                        </div>
+                    </div>
+                </section>
+
+            </div>
         </section>
     </div>
 
@@ -138,20 +139,88 @@
     <script src="../js/common.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="../node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- <script>
+        window.onload = function () {
+            new Rolldate({
+                el: '#groupMethod',
+                format: 'cus',
+                customerData: [{
+                        code: 'apple',
+                        title: '深埋'
+                    },
+                    {
+                        code: 'bunana',
+                        title: '化制'
+                    },
+                    {
+                        code: 'aroang',
+                        title: '高温处理'
+                    },
+                    {
+                        code: 'aroang2',
+                        title: '化学处理'
+                    },
+                    {
+                        code: 'aroang3',
+                        title: '其他'
+                    },
+                ],
+                lang: {
+                    title: '选择方式'
+                },
+                confirm: function (date) {
+                    console.log(date)
+                    console.log('确定按钮触发');
+                },
+            })
+        }
+    </script> -->
     <script>
         $(function () {
-            var userUlClickIndex = 0;
-            $(".common-ul li .chooseBtn").click(function () {
-                userUlClickIndex++;
-                if (userUlClickIndex % 2 !== 0) {
-                    $(this).next().removeClass("hideDown").addClass("slideDown");
-                } else {
-                    $(this).next().addClass("hideDown");
-                }
+            // 死亡原因数据
+            downListData({
+                groupId: 'groupReson', //触发事件ID，与dom相关
+                groupPanelId: 'groupResonPanel', //显示面板ID，自定义
+                arr: ['正常死亡', '拉稀', '喘气', '发烧', '感冒'],
+                isChoose: true, //是否有单选、多选
+                className: 'icon-checkBox', //复选框class
+            });
+            // 处理方式数据
+            downListData({
+                groupId: 'groupMethod', //触发事件ID，与dom相关
+                groupPanelId: 'groupMethodPanel', //显示面板ID，自定义
+                arr: ['深埋', '化制', '高温处理', '化学处理', '其他'],
+                isChoose: true, //是否有单选、多选
+                className: 'icon-radio', //单选框class
+            });
+            // 摄像头数据
+            downListData({
+                groupId: 'groupVideo', //触发事件ID，与dom相关
+                groupPanelId: 'groupVideoPanel', //显示面板ID，自定义
+                arr: ['摄像头1', '摄像头2', '摄像头3', '摄像头4', '摄像头5'],
+                isChoose: false, //是否有单选、多选
+                className: 'radio', //单选框class
+            });
+            $("#signBtn").click(function () {
+                $("#signNamePanel").show();
             })
-
+            $('#signBtn').click(function () {
+                //取消事件冒泡 
+                event.stopPropagation();
+                $('#signNamePanel').fadeIn();
+            });
+            //点击空白处隐藏弹出层，下面为滑动消失效果和淡出消失效果。
+            $(document).click(function (event) {
+                var _con = $('.selectOut section'); // 设置目标区域
+                if (!_con.is(event.target) && _con.has(event.target).length === 0) { // Mark 1
+                    $('#signNamePanel').hide(); //淡出消失
+                }
+            });
         })
+
     </script>
+    <script type="text/javascript" src="../js/createGroupPanel.js"></script>
+
 </body>
 
 </html>
