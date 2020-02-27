@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>无害化申报</title>
+    <link rel="stylesheet" href="../node_modules/mui/css/mui.min.css">
     <link href="../node_modules/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../node_modules/layui/css/layui.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
@@ -44,7 +45,7 @@
                             <span></span>
                             <div class="chooseBtn" id="chooseBtn"></div>
                         </div>
-                        <a class="normalBtn fillBtn">查看</a>
+                        <a class="normalBtn fillBtn" href="1.112.html">查看</a>
                     </li>
                     <li>
                         <span class="grey"></span>
@@ -56,10 +57,10 @@
                     <li>
                         <span class="grey"></span>
                         <div class="flex-between">
-                            <a class="greyBtn" href="1.1.html">重录视频</a>
+                            <a class="greyBtn " href="1.1.html">重录视频</a>
                             <a> 00:08</a>
                         </div>
-                        <a class="normalBtn fillBtn" id='playBtn'>播放</a>
+                        <a class="normalBtn fillBtn wave left" id='playBtn'>播放</a>
                     </li>
                     <li>
                         <span class="grey">现场照片</span>
@@ -80,13 +81,27 @@
                         <span class="black">
                             <img src="../images/sign.jpg">
                         </span>
-                        <a class="greyBtn" href="1.1.html">重签</a>
+                        <a class="greyBtn" id="reSignNameBtn">重签</a>
                     </li>
-                    </span>
+                </ul>
             </div>
             <footer>
                 <a class="normalBtn fillBtn" href="1.1.0.html">提交</a>
             </footer>
+            <div class="selectOut selectOutSignPanel" id="signNamePanel" style="display: none;">
+                <section>
+                    <div class="btnBox">
+                        <button class="cancleBtn">重签</button>
+                        <button class="currenBtn" id="saveSignName">保存</button>
+                    </div>
+                    <div class="signNamePanel">
+                        <div class="signNameArea">
+                            签名区域
+                        </div>
+                    </div>
+                </section>
+
+            </div>
             <div class="windowPanel" id="windowVideoPanel" style="display: none;">
                 <div class="windowContentPanel windowVideoPanel">
                     <div class="videoPanel">
@@ -121,7 +136,15 @@
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="../node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/createGroupPanel.js"></script>
+    <script src="../node_modules/mui/js/mui.min.js"></script>
     <script>
+        mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		mui('.mui-input-group').on('change', 'input', function() {
+			var value = this.checked?"true":"false";
+			this.previousElementSibling.innerText = "checked："+value;
+		});
         $(function () {
             var userUlClickIndex = 0;
             $(".common-ul li .chooseBtn").click(function () {
@@ -139,7 +162,7 @@
                 groupPanelId: 'groupVideoPanel', //显示面板ID，自定义
                 arr: ['摄像头1', '摄像头2', '摄像头3'],
                 isChoose: true, //是否有单选、多选
-                className: 'icon-radio', //复选框class
+                className: 'radio', //复选框class
             });
             showWindowPanel();
         })
@@ -159,6 +182,22 @@
             $("#closeVideoWindow").click(function () {
                 $("#windowVideoPanel").hide();
             })
+            // 签名区域
+            $("#saveSignName").click(function () {
+                $("#signNamePanel").hide();
+            })
+            $('#signBtn,#reSignNameBtn').click(function () {
+                //取消事件冒泡 
+                event.stopPropagation();
+                $('#signNamePanel').fadeIn();
+            });
+            //点击空白处隐藏弹出层，下面为滑动消失效果和淡出消失效果。
+            $(document).click(function (event) {
+                var _con = $('.selectOut section'); // 设置目标区域
+                if (!_con.is(event.target) && _con.has(event.target).length === 0) { // Mark 1
+                    $('#signNamePanel').hide(); //淡出消失
+                }
+            });
         }
     </script>
 </body>

@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>申报记录查询</title>
+    
+	<!--标准mui.css-->
+	<link rel="stylesheet" href="../node_modules/mui/css/mui.min.css">
     <link href="../node_modules/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../node_modules/layui/css/layui.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
     <link href="../css/layout.css" rel="stylesheet">
-    
-	<!--标准mui.css-->
-	<link rel="stylesheet" href="../node_modules/mui/css/mui.min.css">
 </head>
 
 <body>
@@ -44,7 +44,7 @@
                     <li>
                         <span class="grey">耳标号</span>
                         <span class="black">已添加<a>109</a>个耳标号</span>
-                        <a class="normalBtn fillBtn pos-ab" id="groupNumber">查看</a>
+                        <a class="normalBtn fillBtn pos-ab wave left" id="groupNumber">查看</a>
                     </li>
                     <li>
                         <span class="grey">死亡原因</span>
@@ -56,7 +56,7 @@
                     </li>
                     <li>
                         <span class="grey">现场视频</span>
-                        <a class="normalBtn fillBtn">播放</a>
+                        <a class="normalBtn fillBtn wave left" href="1.112.html">播放</a>
                     </li>
                     <li class="specailImgPanle">
                         <span class="grey">现场照片</span>
@@ -99,7 +99,7 @@
                     '1 21345356 565454', '1 21345356 565454'
                 ],
                 isChoose: false, //是否有单选、多选
-                className: 'icon-radio', //单选框class
+                className: 'radio', //单选框class
             });
         })
         mui.init({

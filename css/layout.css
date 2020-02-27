@@ -336,10 +336,12 @@ footer {
 
 .notBorder input {
     width: 61%;
+    height: 35px;
     border-radius: 3px;
     border: 1px solid #cbd6e7;
     padding: 5px 8px;
     margin-right: 8px;
+    margin-bottom: 0;
 }
 
 .notBorder input:focus {
@@ -364,9 +366,11 @@ footer {
 
 .notBorder .selectPanel input {
     width: 100%;
+    height: 25px;
     border-radius: 3px;
     border: 1px solid transparent;
     padding: 0;
+    margin-bottom: 0;
 }
 
 .notBorder .selectPanel input:focus {
@@ -555,14 +559,12 @@ footer {
     background: #fff;
 }
 
-.selectOut ul li:hover {
-    background: #f2f2f2;
-}
-
 .selectOut ul li a {
     display: inline-block;
     padding-left: 1rem;
     color: #333;
+    min-width: 68px;
+    text-align: left;
 }
 
 .selectOut::before {
@@ -602,7 +604,19 @@ footer {
     border-radius: 50px;
     border: 5px solid #46b81b;
 }
-
+.selectOut .mui-checkbox input[type=checkbox]:checked:before, .mui-radio input[type=radio]:checked:before {
+    color: #46b81b;
+}
+.selectOut .mui-checkbox input[type=checkbox]:before, .mui-radio input[type=radio]:before {
+    font-size: 23px;
+}
+.selectOut .mui-checkbox input[type=checkbox], .mui-radio input[type=radio] {
+    position: relative;
+    top: 2px;
+}
+.selectOut .mui-checkbox.mui-left input[type=checkbox], .mui-radio.mui-left input[type=radio] {
+    left: 10px;
+}
 .btnBox {
     position: relative;
     background: #46b81b;

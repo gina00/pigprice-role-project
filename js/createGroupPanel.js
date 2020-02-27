@@ -3,17 +3,19 @@ function downListData(dataObj) {
     var newDom = '';
     var itemData = '';
     var className = '';
+    var style = "";
     if (dataObj.isChoose || dataObj.isChoose == true) {
         className = dataObj.className;
     } else {
         className = '';
+        style = 'display:none';
     }
     newDom += "<div class='selectOut' id='" + dataObj.groupPanelId + "' style='display: none;'>";
     newDom += " <ul>";
     for (var i = 0; i < dataObj.arr.length; i++) {
         newDom += " <li>";
-        newDom += " <div>";
-        newDom += " <i class='" + className + "'>";
+        newDom += " <div class='mui-input-row mui-left mui-" + className + " '>";
+        newDom += " <input name=\"checkbox\" value=\"Item 1\" type='" + className + "' style='" + style + "'>";
         newDom += " </i>";
         newDom += " <a>";
         newDom += dataObj.arr[i];

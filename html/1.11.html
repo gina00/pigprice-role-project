@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>申报记录查询</title>
+
+    <!--标准mui.css-->
+    <link rel="stylesheet" href="../node_modules/mui/css/mui.min.css">
     <link href="../node_modules/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../node_modules/layui/css/layui.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
@@ -76,12 +79,27 @@
                             <div class="chooseBtn" id="chooseBtn"></div>
 
                         </div>
-                        <a class="normalBtn fillBtn">查看</a>
+                        <a class="normalBtn fillBtn wave left" href="1.112.html">查看</a>
 
                     </li>
-                    <li>
+                    <li id="recordingVideoPanel">
                         <span class="grey"></span>
-                        <a class="normalBtn fillBtn">录视频</a>
+                        <a class="normalBtn fillBtn wave left" id="recordingVideoBtn">录视频</a>
+                    </li>
+                    <li id="stopVideoPanel" style="display: none;">
+                        <span class="grey"></span>
+                        <div class="flex-between">
+                            <a class="greyBtn" href="1.1.html">停止</a>
+                            <a> 00:08</a>
+                        </div>
+                    </li>
+                    <li id="recordVideoPanel" style="display: none;">
+                        <span class="grey"></span>
+                        <div class="flex-between">
+                            <a class="greyBtn" href="1.1.html">重录视频</a>
+                            <a> 00:08</a>
+                        </div>
+                        <a class="normalBtn fillBtn wave left" id='playBtnVideo'>播放</a>
                     </li>
                     <li class="specailImgPanle">
                         <span class="grey">现场照片</span>
@@ -109,20 +127,27 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li id="notSignNamePanel">
                         <span class="grey">现场照片</span>
                         <a class="greyBtn" id="signBtn">点击签名</a>
+                    </li>
+                    <li id="hadSignPanel" style="display:none;">
+                        <span class="grey">现场照片</span>
+                        <span class="black">
+                            <img src="../images/sign.jpg">
+                        </span>
+                        <a class="greyBtn" id="reSignNameBtn">重签</a>
                     </li>
                 </ul>
             </div>
             <footer>
-                <a class="normalBtn fillBtn" href="1.12.html">提交</a>
+                <a class="normalBtn fillBtn wave left" href="1.12.html">提交</a>
             </footer>
             <div class="selectOut selectOutSignPanel" id="signNamePanel" style="display: none;">
                 <section>
                     <div class="btnBox">
                         <button class="cancleBtn">重签</button>
-                        <button class="currenBtn">保存</button>
+                        <button class="currenBtn" id="saveSignName">保存</button>
                     </div>
                     <div class="signNamePanel">
                         <div class="signNameArea">
@@ -132,6 +157,15 @@
                 </section>
 
             </div>
+            <div class="windowPanel" id="windowVideoPanel" style="display: none;">
+                <div class="windowContentPanel windowVideoPanel">
+                    <div class="videoPanel">
+                        <video src="../video/video1.mp4" controls="controls" autoplay="autoplay" height="100%"
+                            id="video1"></video>
+                    </div>
+                    <a class="icon-close closeBtn" id="closeVideoWindow"></a>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -139,6 +173,8 @@
     <script src="../js/common.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="../node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/mui/js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/createGroupPanel.js"></script>
     <!-- <script>
         window.onload = function () {
             new Rolldate({
@@ -176,6 +212,13 @@
         }
     </script> -->
     <script>
+        mui.init({
+            swipeBack: true //启用右滑关闭功能
+        });
+        mui('.mui-input-group').on('change', 'input', function () {
+            var value = this.checked ? "true" : "false";
+            this.previousElementSibling.innerText = "checked：" + value;
+        });
         $(function () {
             // 死亡原因数据
             downListData({
@@ -183,7 +226,7 @@
                 groupPanelId: 'groupResonPanel', //显示面板ID，自定义
                 arr: ['正常死亡', '拉稀', '喘气', '发烧', '感冒'],
                 isChoose: true, //是否有单选、多选
-                className: 'icon-checkBox', //复选框class
+                className: 'checkbox', //复选框class
             });
             // 处理方式数据
             downListData({
@@ -191,20 +234,35 @@
                 groupPanelId: 'groupMethodPanel', //显示面板ID，自定义
                 arr: ['深埋', '化制', '高温处理', '化学处理', '其他'],
                 isChoose: true, //是否有单选、多选
-                className: 'icon-radio', //单选框class
+                className: 'radio', //单选框class
             });
             // 摄像头数据
             downListData({
                 groupId: 'groupVideo', //触发事件ID，与dom相关
                 groupPanelId: 'groupVideoPanel', //显示面板ID，自定义
                 arr: ['摄像头1', '摄像头2', '摄像头3', '摄像头4', '摄像头5'],
-                isChoose: false, //是否有单选、多选
+                isChoose: true, //是否有单选、多选
                 className: 'radio', //单选框class
             });
-            $("#signBtn").click(function () {
-                $("#signNamePanel").show();
+            // 弹出视频播放窗口
+            $("#playBtn,#playBtnVideo").click(function () {
+                $("#windowVideoPanel").show();
+            });
+            $("#closeVideoWindow").click(function () {
+                $("#windowVideoPanel").hide();
             })
-            $('#signBtn').click(function () {
+            // 录视频
+            $("#recordingVideoBtn").click(function(){
+                $("#recordingVideoPanel").hide();
+                $("#stopVideoPanel,#recordVideoPanel").show();
+            })
+            // 签名区域
+            $("#saveSignName").click(function () {
+                $("#signNamePanel").hide();
+                $("#hadSignPanel").show();
+                $("#notSignNamePanel").hide();
+            })
+            $('#signBtn,#reSignNameBtn').click(function () {
                 //取消事件冒泡 
                 event.stopPropagation();
                 $('#signNamePanel').fadeIn();
@@ -217,9 +275,10 @@
                 }
             });
         })
+    </script>
+    <script>
 
     </script>
-    <script type="text/javascript" src="../js/createGroupPanel.js"></script>
 
 </body>
 

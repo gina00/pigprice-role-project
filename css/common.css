@@ -125,8 +125,29 @@ a:hover {
     border-radius: 50px;
     text-align: center;
     white-space: nowrap;
+    position: relative;
 }
-
+.normalBtn.left:after {
+    left: 0;
+}
+.normalBtn.wave:after {
+    content: "";
+    background: #fff;
+    display: block;
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -5%;
+    border-radius: 50px;
+    margin-left: -30%;
+    opacity: 0;
+    transition: all 0.65s ease-in-out;
+}
+.normalBtn.wave:active:after {
+    width: 0px;
+    opacity: 1;
+    transition: 0.01s;
+}
 .normalBtn:hover {
     cursor: pointer;
 }

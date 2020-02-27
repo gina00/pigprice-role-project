@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>查询</title>
+    <link rel="stylesheet" href="../node_modules/mui/css/mui.min.css">
     <link href="../node_modules/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../node_modules/layui/css/layui.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
@@ -63,7 +64,18 @@
     <script src="../node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/rolldate.js"></script>
     <script type="text/javascript" src="../js/createGroupPanel.js"></script>
+    <script src="../node_modules/mui/js/mui.min.js"></script>
     <script>
+        mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		mui('.mui-input-group').on('change', 'input', function() {
+			var value = this.checked?"true":"false";
+            this.previousElementSibling.innerText = "checked："+value;
+            if(this.checked){
+                $(".selectOut").hide();
+            }
+		});
         $(function () {
             $(".radioPanel").click(function () {
                 $(this).addClass("selected").siblings().removeClass("selected");
@@ -74,14 +86,14 @@
                 groupPanelId: 'groupStatusPanel', //显示面板ID，自定义
                 arr: ['待勘察', '勘察通过', '勘察不通过'],
                 isChoose: true, //是否有单选、多选
-                className: 'icon-radio', //复选框class
+                className: 'radio', //复选框class
             }); // 场所类型数据
             downListData({
                 groupId: 'groupType', //触发事件ID，与dom相关
                 groupPanelId: 'groupTypePanel', //显示面板ID，自定义
                 arr: ['全部', '无害化场', '养殖场'],
                 isChoose: true, //是否有单选、多选
-                className: 'icon-radio', //复选框class
+                className: 'radio', //复选框class
             });
         })
         window.onload = function () {
