@@ -555,9 +555,14 @@ footer {
     background: #fff;
 }
 
+.selectOut ul li:hover {
+    background: #f2f2f2;
+}
+
 .selectOut ul li a {
     display: inline-block;
     padding-left: 1rem;
+    color: #333;
 }
 
 .selectOut::before {
@@ -703,3 +708,46 @@ footer {
 .videoPanel {
     height: 180px;
 }
+
+.showImagePanel {
+    font-size: 14px;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    left: 0;
+    z-index: 1;
+    overflow: auto;
+}
+
+.showImagePanel::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* 重写mui轮播样式 */
+.showImagePanel .mui-slider {
+    top: 34px;
+}
+
+.showImagePanel .mui-slider-indicator {
+    position: relative;
+    bottom: -6px;
+}
+
+.showImagePanel .mui-slider-indicator .mui-indicator {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+}
+
+.showImagePanel .mui-slider-indicator .mui-active.mui-indicator {
+    background: #46b81b;
+}
+
+/* 重写mui轮播样式 */

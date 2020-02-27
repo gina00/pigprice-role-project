@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>申报记录查询</title>
+	<link href="../node_modules/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../node_modules/layui/css/layui.css" rel="stylesheet">
+	<link href="../css/common.css" rel="stylesheet">
+	<link href="../css/layout.css" rel="stylesheet">
+	<!--标准mui.css-->
+	<link rel="stylesheet" href="../node_modules/mui/css/mui.min.css">
+</head>
+
+<body>
+	<div class="commonPage">
+		<header class="toolbar greenToolBar">
+			<a class="icon-back" href="../index.html"></a>
+			<span class="title">查看照片</span>
+			<span class="right_link">删除</span>
+		</header>
+		<section class="main-Panel includeTab">
+			<div class="showImagePanel" id="listPanel" style="display: block;">
+				<div id="slider" class="mui-slider">
+					<div class="mui-slider-group mui-slider-loop">
+						<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img src="../images/pingg.jpg">
+							</a>
+						</div>
+						<!-- 第一张 -->
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../images/pingg.jpg">
+							</a>
+						</div>
+						<!-- 第二张 -->
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../images/pingg.jpg">
+							</a>
+						</div>
+						<!-- 第三张 -->
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../images/pingg.jpg">
+							</a>
+						</div>
+						<!-- 第四张 -->
+						<div class="mui-slider-item">
+							<a href="#">
+								<img src="../images/pingg.jpg">
+							</a>
+						</div>
+						<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img src="../images/pingg.jpg">
+							</a>
+						</div>
+					</div>
+					<div class="mui-slider-indicator">
+						<div class="mui-indicator mui-active"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/common.js"></script>
+	<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+	<script src="../node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script src="../node_modules/layui/layui.js"></script>
+	<script src="../node_modules/mui/js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/createGroupPanel.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init({
+			swipeBack: false //启用右滑关闭功能
+		});
+		var slider = mui("#slider");
+		document.getElementById("switch").addEventListener('toggle', function (e) {
+			if (e.detail.isActive) {
+				slider.slider({
+					interval: 5000
+				});
+			} else {
+				slider.slider({
+					interval: 0
+				});
+			}
+		});
+	</script>
+</body>
+
+</html>
